@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
@@ -18,21 +19,19 @@ use Spatie\YamlFrontMatter\YamlFrontMatter;
 */
 
 Route::get('/', function () {
-  $posts = Post::all();
-
-  //Give me all posts and their contents and titles
   return view ('posts', [
-    'posts' => $posts
+    'posts' => Post::with('category')->get()
   ]);
-
 });
 
-Route::get('/posts/{post}', function ($slug) {
-    //Find a post by its slug and pass it to a view called "post"
-
+Route::get('/posts/{post:slug}', function (Post $post) {
     return view('post', [
-      'post' => Post::find($slug)
+      'post' => $post
     ]);
+ });
 
-
-})->where('post', '[A-z_\-]+'); //wildcard constraint - execute only if letters or dash '-'. Otherwise 404
+Route::get('/categories/{category:slug}', function (Category $category) {
+    return view('posts', [
+      'posts' => $category->posts
+    ]);
+});
