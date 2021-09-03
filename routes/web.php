@@ -22,7 +22,7 @@ use Spatie\YamlFrontMatter\YamlFrontMatter;
 Route::get('/', function () {
   return view ('posts', [
     //Get all posts and related category and author and sort by latest first (you can specify the column ie latest('published_date))
-    'posts' => Post::latest()
+    'posts' => Post::latest()->get()
 
     /** The category and author are now loaded in $with in Post model. The following show how to specific them here */
     // 'posts' => Post::latest()->with('category', 'author')->get()

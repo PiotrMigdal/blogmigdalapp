@@ -1,4 +1,4 @@
-<x-layout>
+{{-- <x-layout>
   @foreach ($posts as $post)
     <article>
       <h1>
@@ -12,4 +12,27 @@
       </div>
     </article>
   @endforeach
+</x-layout> --}}
+
+<x-layout>
+  @include('_posts-header')
+
+  <main class="max-w-6xl mx-auto mt-6 lg:mt-20 space-y-6">
+    @if ($posts->count())
+      <x-post-featured-card :post="$posts[0]" />
+
+      @if ($posts->count() > 1)
+      <div class="lg:grid lg:grid-cols-2">
+        @foreach ($posts->skip(1) as $post)
+        @dd($loop)
+          <x-post-card :post="$post"/>
+        @endforeach
+      </div>
+      @endif
+      <div class="lg:grid lg:grid-cols-3">
+      </div>
+    @else
+      <p class="text-center">No posts yet</p>
+    @endif
+  </main>
 </x-layout>
