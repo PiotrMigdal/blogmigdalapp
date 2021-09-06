@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
@@ -19,24 +20,9 @@ use Spatie\YamlFrontMatter\YamlFrontMatter;
 |
 */
 
-Route::get('/', function () {
-  return view ('posts', [
-    //Get all posts and related category and author and sort by latest first (you can specify the column ie latest('published_date))
-    'posts' => Post::latest()->get(),
-    'categories' => Category::all()
+Route::get('/', [PostController::class, 'index'])->name('home');
 
-    /** The category and author are now loaded in $with in Post model. The following show how to specific them here */
-    // 'posts' => Post::latest()->with('category', 'author')->get()
-    /** Or you can load them in post but here select what you don't need */
-    // 'posts' => Post::latest()->without('author')->get()
-  ]);
-});
-
-Route::get('/posts/{post:slug}', function (Post $post) {
-    return view('post', [
-      'post' => $post
-    ]);
- });
+Route::get('/posts/{post:slug}', [PostController::class, 'show']);
 
 Route::get('/categories/{category:slug}', function (Category $category) {
     return view('posts', [
