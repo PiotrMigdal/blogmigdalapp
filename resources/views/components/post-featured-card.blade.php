@@ -17,7 +17,7 @@
 
               <div class="mt-4">
                   <h1 class="text-3xl">
-                      {{ $post->excerpt }}
+                      {{ $post->title }}
                   </h1>
 
                   <span class="mt-2 block text-gray-400 text-xs">
@@ -26,8 +26,8 @@
               </div>
           </header>
 
-          <div class="text-sm mt-2">
-              {{!! $post->excerpt !!}}
+          <div class="text-sm mt-2 space-y-4">
+              {!! $post->excerpt !!}
           </div>
 
           <footer class="flex justify-between items-center mt-8">
