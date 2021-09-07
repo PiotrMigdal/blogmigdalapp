@@ -11,7 +11,9 @@ class PostController extends Controller
     public function index()
     {
         return view ('posts.index', [
-        'posts' => Post::latest()->filter(request(['search', 'category', 'author']))->get(),
+        'posts' => Post::latest()->filter(
+            request(['search', 'category', 'author'])
+            )->simplePaginate(5)->withQueryString()
 
         /** The category and author are now loaded in $with in Post model. The following show how to specific them here */
         // 'posts' => Post::latest()->with('category', 'author')->get()
