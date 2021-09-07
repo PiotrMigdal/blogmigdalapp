@@ -24,7 +24,7 @@ Route::get('/', [PostController::class, 'index'])->name('home');
 
 Route::get('/posts/{post:slug}', [PostController::class, 'show']);
 
-/** NOTE THAT YOU CAN ALSO FILTER CATEGORIES USING THE FOLLOWING. CURRENTLY REPLACED WITH FILTER IN PostController */
+/** NOTE THAT YOU CAN ALSO FILTER CATEGORIES/Authors USING THE FOLLOWING. CURRENTLY REPLACED WITH FILTER IN PostController */
 // Route::get('/categories/{category:slug}', function (Category $category) {
 //     return view('posts', [
 //       'posts' => $category->posts,
@@ -32,9 +32,8 @@ Route::get('/posts/{post:slug}', [PostController::class, 'show']);
 //       'categories' => Category::all()
 //     ]);
 // });
-
-Route::get('/authors/{author:username}', function (User $author) {
-    return view('posts', [
-      'posts' => $author->posts
-    ]);
-});
+// Route::get('/authors/{author:username}', function (User $author) {
+//     return view('posts.index', [
+//       'posts' => $author->posts
+//     ]);
+// });
