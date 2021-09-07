@@ -10,9 +10,8 @@ class PostController extends Controller
 {
     public function index()
     {
-        return view ('posts', [
-        'posts' => Post::latest()->filter(request(['search']))->get(),
-        'categories' => Category::all()
+        return view ('posts.index', [
+        'posts' => Post::latest()->filter(request(['search', 'category']))->get(),
 
         /** The category and author are now loaded in $with in Post model. The following show how to specific them here */
         // 'posts' => Post::latest()->with('category', 'author')->get()
@@ -22,7 +21,7 @@ class PostController extends Controller
     }
     public function show(Post $post)
     {
-        return view('post', [
+        return view('posts.show', [
         'post' => $post
         ]);
     }
