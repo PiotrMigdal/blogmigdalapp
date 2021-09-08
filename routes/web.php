@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\RegisterController;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
@@ -23,6 +24,12 @@ use Spatie\YamlFrontMatter\YamlFrontMatter;
 Route::get('/', [PostController::class, 'index'])->name('home');
 
 Route::get('/posts/{post:slug}', [PostController::class, 'show']);
+
+Route::get('register', [RegisterController::class, 'create']);
+
+//Common convention is to call the registration request 'store'
+Route::post('register', [RegisterController::class, 'store']);
+
 
 /** NOTE THAT YOU CAN ALSO FILTER CATEGORIES/Authors USING THE FOLLOWING. CURRENTLY REPLACED WITH FILTER IN PostController */
 // Route::get('/categories/{category:slug}', function (Category $category) {
