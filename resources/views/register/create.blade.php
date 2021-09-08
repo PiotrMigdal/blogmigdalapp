@@ -9,19 +9,22 @@
                     <label for="username" class="block mb-2 uppercase font-bold text-xs text-gray-700">
                         Username
                     </label>
-                    <input type="text" class="border border-gray-400 p-2 w-full" name="username" id="username" required>
+                    <input type="text" class="border border-gray-400 p-2 w-full" name="username" id="username" required value="{{ old('username') }}">
                 </div>
                 <div class="mb-6">
                     <label for="name" class="block mb-2 uppercase font-bold text-xs text-gray-700">
                         Name
                     </label>
-                    <input type="text" class="border border-gray-400 p-2 w-full" name="name" id="name" required>
+                    <input type="text" class="border border-gray-400 p-2 w-full" name="name" id="name" required value="{{ old('name') }}">
+                    @error('name')
+                        <p class="text-red-500 text-xs">{{ $message }}</p>
+                    @enderror
                 </div>
                 <div class="mb-6">
                     <label for="email_register" class="block mb-2 uppercase font-bold text-xs text-gray-700">
                         Email
                     </label>
-                    <input type="email" class="border border-gray-400 p-2 w-full" name="email" id="email_register" required>
+                    <input type="email" class="border border-gray-400 p-2 w-full" name="email" id="email_register" required value="{{ old('email') }}">
                 </div>
                 <div class="mb-6">
                     <label for="password" class="block mb-2 uppercase font-bold text-xs text-gray-700">
