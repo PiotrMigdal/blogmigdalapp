@@ -25,6 +25,7 @@ class RegisterController extends Controller
 
         // log user in
         auth()->login($user);
+        session()->regenerate();
 
 
         // To send success message you can use flash session or with()
