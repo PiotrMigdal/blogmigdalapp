@@ -22,6 +22,9 @@ class RegisterController extends Controller
         $attributes['password'] = bcrypt($attributes['password']);
 
         User::create($attributes);
-        return redirect('/');
+
+        // To send success message you can use flash session or with()
+        //session()->flash('success', 'Your account has been created');
+        return redirect('/')->with('success', 'Your account has been created');
     }
 }
