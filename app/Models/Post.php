@@ -35,6 +35,7 @@ class Post extends Model
         );
     }
 
+
     public function category()
     {
         //Eloquent Relationship to Category
@@ -45,6 +46,11 @@ class Post extends Model
     {
         //Had to add name of the foreign key because it would try to find author_id which doesn't exist
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 
 }
