@@ -18,9 +18,9 @@ class DatabaseSeeder extends Seeder
     {
         //Truncate the tables so you won't get any error because of unique values when run seeder again
         //Not needed if you refresh DB
-        User::truncate();
-        Category::truncate();
-        Post::truncate();
+        // User::truncate();
+        // Category::truncate();
+        // Post::truncate();
 
         /** Post factory included creation of User and Category because of relationship. See PostFactory */
         //Post::factory(5)->create();

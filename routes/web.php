@@ -45,6 +45,10 @@ Route::get('login', [SessionsController::class, 'create'])->middleware('guest');
 Route::post('sessions', [SessionsController::class, 'store'])->middleware('guest');
 Route::post('logout', [SessionsController::class, 'destroy'])->middleware('auth');
 
+// ADMIN PANEL
+Route::get('admin/posts/create', [PostController::class, 'create'])->middleware(('admin'));
+Route::post('admin/posts', [PostController::class, 'store'])->middleware(('admin'));
+
 
 
 /** NOTE THAT YOU CAN ALSO FILTER CATEGORIES/Authors USING THE FOLLOWING. CURRENTLY REPLACED WITH FILTER IN PostController */
