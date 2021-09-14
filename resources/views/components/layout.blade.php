@@ -30,7 +30,7 @@
                                 Welcome, {{ auth()->user()->name }} !
                             </button>
                         </x-slot>
-                        <x-dropdown-item href="/admin/Dashboard">
+                        <x-dropdown-item :active="request()->is('admin/posts')" href="/admin/posts">
                             Dashboard
                         </x-dropdown-item>
                         <x-dropdown-item :active="request()->is('admin/posts/create')" href="/admin/posts/create">
