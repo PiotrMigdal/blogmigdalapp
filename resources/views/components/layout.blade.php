@@ -30,12 +30,14 @@
                                 Welcome, {{ auth()->user()->name }} !
                             </button>
                         </x-slot>
-                        <x-dropdown-item :active="request()->is('admin/posts')" href="/admin/posts">
-                            Dashboard
-                        </x-dropdown-item>
-                        <x-dropdown-item :active="request()->is('admin/posts/create')" href="/admin/posts/create">
-                            Create Post
-                        </x-dropdown-item>
+                        @can('admin')
+                            <x-dropdown-item :active="request()->is('admin/posts')" href="/admin/posts">
+                                Dashboard
+                            </x-dropdown-item>
+                            <x-dropdown-item :active="request()->is('admin/posts/create')" href="/admin/posts/create">
+                                Create Post
+                            </x-dropdown-item>
+                        @endcan
                         {{-- Optional Logout which trigger the form --}}
                         <x-dropdown-item href="#" x-data="{}" @click.prevent="document.querySelector('#logout-form').submit()">
                             Log out
